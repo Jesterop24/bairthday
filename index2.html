@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Landing Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d1417;
+      --panel: #112026;
+      --panel-soft: #17313a;
+      --text: #e8f1f2;
+      --muted: #a8c1c7;
+      --accent: #ff7a18;
+      --accent-2: #ffd166;
+      --line: rgba(255, 255, 255, 0.12);
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Sora", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 0% 0%, rgba(255, 122, 24, 0.22), transparent 60%),
+        radial-gradient(900px 500px at 100% 0%, rgba(255, 209, 102, 0.16), transparent 60%),
+        linear-gradient(160deg, #0b1215 0%, #0f1b20 60%, #112026 100%);
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+
+    .container {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      font-size: 1.1rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.95rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.25s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 4.5rem 0 3rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .highlight {
+      color: var(--accent-2);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 60ch;
+      margin-bottom: 1.75rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #ff9f4a 100%);
+      color: #1b1005;
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .projects {
+      padding: 1rem 0 4rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 209, 102, 0.5);
+    }
+
+    .project h4 {
+      margin-bottom: 0.45rem;
+      font-size: 1rem;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project a {
+      color: var(--accent-2);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .contact {
+      margin: 0 0 4rem;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .contact p {
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 0 0 1.2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 3rem;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        display: none;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.8rem, 9vw, 2.4rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">YOUR NAME</div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="about">
+      <div>
+        <h1>
+          I build <span class="highlight">clean, fast</span><br />
+          web experiences.
+        </h1>
+        <p>
+          I am a front-end developer focused on responsive websites, smooth UI interactions, and practical design systems. This landing page is a starter template for your portfolio.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="#contact">Hire Me</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Core Skills</h3>
+        <div class="pill-row">
+          <span class="pill">HTML</span>
+          <span class="pill">CSS</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">React</span>
+          <span class="pill">UI Design</span>
+          <span class="pill">Accessibility</span>
+        </div>
+        <p style="color: var(--muted); font-size: 0.92rem;">
+          Replace this section with your real stack, years of experience, and preferred tools.
+        </p>
+      </aside>
+    </section>
+
+    <section class="projects" id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="project-grid">
+        <article class="project">
+          <h4>Project One</h4>
+          <p>Modern marketing site with responsive sections and performance-focused layout.</p>
+          <a href="#">Case Study</a>
+        </article>
+        <article class="project">
+          <h4>Project Two</h4>
+          <p>Dashboard interface with reusable components and intuitive data visualization.</p>
+          <a href="#">Live Demo</a>
+        </article>
+        <article class="project">
+          <h4>Project Three</h4>
+          <p>E-commerce front-end with smooth checkout flow and optimized product pages.</p>
+          <a href="#">Source Code</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div>
+        <h3>Let us build something useful.</h3>
+        <p>Email: you@example.com</p>
+      </div>
+      <a class="btn btn-primary" href="mailto:you@example.com">Get In Touch</a>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 YOUR NAME. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
